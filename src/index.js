@@ -1,7 +1,9 @@
-const express = require("express");
-const { PORT } = require("./config/serverConfig");
-const dbConnect = require("./config/dbConnect");
+import express from "express";
+import { PORT } from "./config/serverConfig.js";
+import dbConnect from "./config/dbConnect.js";
 const app = express();
+
+import service from "./services/index.js";
 
 // Start the server
 app.listen(PORT, async () => {

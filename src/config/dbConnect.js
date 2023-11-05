@@ -1,5 +1,5 @@
-const mongoose = require("mongoose");
-const { MONGO_URL } = require("./serverConfig");
+import mongoose from "mongoose";
+import { MONGO_URL } from "./serverConfig.js";
 
 const dbConnect = async () => {
   try {
@@ -12,4 +12,4 @@ const dbConnect = async () => {
   }
 };
 
-module.exports = dbConnect;
+export default dbConnect;
