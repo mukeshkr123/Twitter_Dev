@@ -1,15 +1,18 @@
 import express from "express";
-import { PORT } from "./config/serverConfig.js";
 import dbConnect from "./config/dbConnect.js";
+import { PORT } from "./config/serverConfig.js";
+import apiRoutes from "./routes/index.js";
 const app = express();
-
-import service from "./services/tweet-service.js";
+import bodyParser from "body-parser";
 
 // Start the server
 app.listen(PORT, async () => {
   console.log(`Server started on port ${PORT}`);
   await dbConnect();
 
-  let ser = new service();
-  await ser.create({ content: " capital other #code #NODE " });
+  // parse the body
+  app.use(bodyParser.json());
+  app.use(bodyParser.urlencoded({ extended: true }));
+
+  app.use("/api", apiRoutes);
 });
