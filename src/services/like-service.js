@@ -38,7 +38,7 @@ class LikeService {
 
       await likeable.save();
 
-      // await exists.remove();
+      await exists.remove();
 
       var isAdded = false;
     } else {

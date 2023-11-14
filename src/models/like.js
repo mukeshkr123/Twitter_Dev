@@ -10,12 +10,12 @@ const likeSchema = new mongoose.Schema(
     likeable: {
       type: mongoose.Schema.Types.ObjectId,
       required: true,
-      ref: "onModel",
+      refPath: "onModel",
     },
     user: {
       type: mongoose.Schema.Types.ObjectId,
-      required: true,
       ref: "User",
+      required: true,
     },
   },
   { timestamps: true }
