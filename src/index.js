@@ -5,6 +5,8 @@ import dbConnect from "./config/dbConnect.js";
 import { PORT } from "./config/serverConfig.js";
 import apiRoutes from "./routes/index.js";
 const app = express();
+import passport from "passport";
+import { passportAuth } from "./config/jw-middleware.js";
 
 // Start the server
 app.listen(PORT, async () => {
@@ -17,6 +19,10 @@ app.listen(PORT, async () => {
   // body parser
   app.use(bodyParser.urlencoded({ extended: true }));
   app.use(bodyParser.json());
+
+  // passport js
+  app.use(passport.initialize());
+  passportAuth(passport);
 
   // routes
   app.use("/api", apiRoutes);
